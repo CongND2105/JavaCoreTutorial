@@ -1,0 +1,38 @@
+[BUG] Scanner skips input
+
+Problem:
+- nextLine() bị bỏ qua sau khi dùng nextInt() / nextDouble()
+
+Cause:
+- nextInt() không đọc ký tự xuống dòng (\n)
+- nextLine() đọc luôn ký tự này → trả về chuỗi rỗng
+
+Fix:
+- Gọi sc.nextLine() để clear buffer trước khi dùng nextLine()
+
+Example:
+int x = sc.nextInt();
+sc.nextLine(); // clear buffer
+String s = sc.nextLine();
+====================================================================================================================================
+[BUG] Infinite loop
+
+Problem:
+- Vòng lặp chạy vô hạn
+
+Cause:
+- Điều kiện loop luôn đúng (while(true))
+- Biến điều kiện không thay đổi trong loop
+
+Fix:
+- Cập nhật state trong mỗi vòng lặp
+- Hoặc thêm điều kiện break hợp lý
+
+Example:
+while (true) {
+    input = sc.nextLine(); // update state
+
+    if (input.equals("exit")) {
+        break;
+    }
+}
