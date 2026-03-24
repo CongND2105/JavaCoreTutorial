@@ -42,15 +42,7 @@ public class Main {
             if(chonlai.equalsIgnoreCase("N")){
                 chon = false;
             }
-
-
-
         }
-
         sc.close();
-
-
-
-
     }
 }
