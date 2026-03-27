@@ -12,4 +12,6 @@ public class Bai1 {
        System.out.println("Diem trung binh cua sinh vien : " +name + "la : " +avgScore);
 //       sc.close();
    }
+
+
 }
