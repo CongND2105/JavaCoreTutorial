@@ -3,7 +3,7 @@ package org.example.Lab2;
 import java.util.Scanner;
 
 public class Bai1 {
-    public static void main(String[] args) {
+    public void nghiemBacNhat() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập vào số nguyên a ");
         int a = sc.nextInt();
