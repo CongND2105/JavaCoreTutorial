@@ -36,3 +36,14 @@ while (true) {
         break;
     }
 }
+====================================================================================================================================
+[BUG] Object
+Problem : 
+- không hứng object 
+Cause : giá trị khi new Object bị null
+
+Fix : 
+- hứng object 
+vd :    Product pr = new Product();
+        Product product = pr.nhapThongTin("Cong", 20,2);
+

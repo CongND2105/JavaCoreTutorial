@@ -1,10 +1,16 @@
 package org.example.OOP;
 
 public class Student {
+    private String name;
+    private int age;
 
-    String name;
-    int age;
+    public void Student(){
 
+    }
+    public void Student(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
     public void learnIT() {
         System.out.println("Đang học IT");
     }
@@ -20,6 +26,7 @@ public class Student {
     public int getAge() {
         return this.age;
     }
+
 
 
 }
