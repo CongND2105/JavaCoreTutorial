@@ -12,6 +12,7 @@ public class mainLab7 {
         };
         for(int i = 0 ; i < service.length ; i++) {
             service[i].check();
+            System.out.println(service[i]);
         }
 
     }
