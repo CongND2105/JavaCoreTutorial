@@ -1,7 +1,10 @@
 package org.example.Lab9;
 
+import java.security.InvalidParameterException;
+import java.util.InputMismatchException;
+
 public class SinhVien {
-    private String masv;
+    private int masv;
     private String hoten;
     private double diem;
     private int tuoi;
@@ -19,18 +22,18 @@ public class SinhVien {
     public SinhVien() {
     }
 
-    public SinhVien(String masv, String hoten, double diem, int tuoi) {
+    public SinhVien(int masv, String hoten, double diem, int tuoi) {
         this.masv = masv;
         this.hoten = hoten;
         this.diem = diem;
         this.tuoi = tuoi;
     }
 
-    public String getMasv() {
+    public int getMasv() {
         return masv;
     }
 
-    public void setMasv(String masv) {
+    public void setMasv(int masv) {
         this.masv = masv;
     }
 
@@ -39,7 +42,11 @@ public class SinhVien {
     }
 
     public void setHoten(String hoten) {
-        this.hoten = hoten;
+        if(isValidName(hoten)){
+            this.hoten = hoten;
+        }else
+            throw new InputMismatchException();
+
     }
 
     public double getDiem() {
@@ -66,5 +73,9 @@ public class SinhVien {
             this.tuoi = tuoi;
         }
 
+    }
+    //validate hoten
+    public static boolean isValidName(String name) {
+        return name.matches("[a-zA-ZÀ-ỹ\\s]+");
     }
 }

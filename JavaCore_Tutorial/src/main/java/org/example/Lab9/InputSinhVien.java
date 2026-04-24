@@ -1,35 +1,88 @@
 package org.example.Lab9;
 
+import java.security.InvalidParameterException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputSinhVien {
-    public static void input(){
-        Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
+    // method input msv
+    public void inputMasv(SinhVien sv){
         while(true){
             try{
-                SinhVien sv = new SinhVien();
-                System.out.println("Nhap ma sinh vien : ");
-                sv.setMasv(sc.nextLine());
-                System.out.println("Nhap ho ten sinh vien : ");
+                System.out.println("nhập mã sinh viên : ");
+                sv.setMasv(sc.nextInt());
+                sc.nextLine();
+                break;
+            }catch(InputMismatchException e){
+                System.out.println("Nhập dữ liệu không hợp lệ vui lòng nhập đúng");
+                sc.nextLine();
+            }
+            catch (IllegalArgumentException e){
+                System.out.println("❌ " +e.getMessage());
+            }
+
+        }
+
+    }
+
+    //method input ho ten sinh vien
+    public void inputHoTen(SinhVien sv){
+        while (true){
+            try{
+                System.out.println("Nhập họ tên sinh viên : ");
                 sv.setHoten(sc.nextLine());
-                System.out.println("Nhap diem sinh vien : ");
+                break;
+            }catch (InputMismatchException e){
+                System.out.println("Nhập dữ liệu không hợp lệ vui lòng nhập đúng");
+            }
+        }
+
+    }
+    // method nhập điểm
+
+    public void inputDiem(SinhVien sv){
+        while (true){
+            try{
+                System.out.println("Nhâp điểm Sinh Viên : ");
                 sv.setDiem(sc.nextDouble());
-                System.out.println("Nhap tuoi sinh vien : ");
-                sv.setTuoi(sc.nextInt());
-                System.out.println(sv);
+                sc.nextLine();
                 break;
             }catch (InputMismatchException e){
                 System.out.println("Nhập dữ liệu không hợp lệ vui lòng nhập đúng");
                 sc.nextLine();
             }catch (IllegalArgumentException e){
-                System.out.println("❌ " +e.getMessage());
-                sc.nextLine();
-
+                System.out.println(" " +e.getMessage());
             }
-
         }
+    }
+
+    // method nhập tuổi
+
+    public void inputTuoi(SinhVien sv){
+        while (true){
+            try{
+                System.out.println("Nhập vào tuổi sinh viên : " );
+                sv.setTuoi(sc.nextInt());
+                break;
+            }catch (InputMismatchException e){
+                System.out.println("Nhập dữ liệu không hợp lệ vui lòng nhập đúng");
+                sc.nextLine();
+            }catch (IllegalArgumentException e){
+                System.out.println(" " +e.getMessage());
+            }
+        }
+    }
+
+    public void input(){
+        SinhVien sv = new SinhVien();
+        inputMasv(sv);
+        inputHoTen(sv);
+        inputDiem(sv);
+        inputTuoi(sv);
+        System.out.println(sv);
 
 
     }
+
 }
