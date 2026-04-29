@@ -1,4 +1,4 @@
-package org.example.Assignment.Model;
+package org.example.Assignment.model;
 
 public class StudentHighSchool extends Student {
     private double scoreMath; // điểm toán

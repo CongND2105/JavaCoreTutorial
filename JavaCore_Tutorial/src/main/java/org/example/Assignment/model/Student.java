@@ -1,6 +1,6 @@
-package org.example.Assignment.Model;
+package org.example.Assignment.model;
 
-abstract class Student {
+public abstract class Student {
     protected String id ;
     protected String name;
     protected int age;

@@ -1,4 +1,4 @@
-package org.example.Assignment.Model;
+package org.example.Assignment.model;
 
 public class StudentUnivercity extends Student{
     private double scoreMath;  // điểm môn toán
@@ -20,6 +20,9 @@ public class StudentUnivercity extends Student{
         this.scoreChemistry = scoreChemistry;
     }
 
+    public StudentUnivercity(String id, String name, int age, double gpa) {
+        super(id, name, age, gpa);
+    }
 
     public double getScoreMath() {
         return scoreMath;
