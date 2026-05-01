@@ -1,19 +1,20 @@
 package org.example.Assignment.controller;
 
 import org.example.Assignment.model.Student;
-import org.example.Assignment.Utils;
 import org.example.Assignment.model.StudentHighSchool;
+import org.example.Assignment.model.StudentInfo;
 import org.example.Assignment.model.StudentUnivercity;
 import org.example.Assignment.repository.DataStudent;
-import org.example.Assignment.service.StudentUnivercityService;
+import org.example.Assignment.service.StudentService;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FeatureChoice {
+
     Scanner sc = new Scanner(System.in);
-    StudentUnivercityService sts= new StudentUnivercityService();
-    ArrayList<Student> list = DataStudent.list;
+    StudentService sts= new StudentService();
+
     public void choiceMain(){
         boolean flag = true ;
         while(flag){
@@ -40,32 +41,51 @@ public class FeatureChoice {
 
     }
 
+    //method tạo sinh viên bởi role
+    public Student createStudentByRole(int role){
+        switch (role){
+            case 1:
+                return inputUnivercityStudent();
+            case 2 :
+                return inputHighSchoolStudent();
+            default:
+                System.out.println("Role không hợp lệ");
+                return null;
+        }
+    }
+
+    //method createClassbyRole
+    public Class<?extends Student> createClassByRole(int role) {
+        Class<? extends Student> clazz;
+        switch (role) {
+            case 1:
+                return clazz = StudentUnivercity.class;
+            case 2:
+                return clazz = StudentHighSchool.class;
+            default:
+                System.out.println("Không có class hợp lệ");
+                return null;
+        }
+    }
+
     //method chọn chức năng của sinh viên
     public void choiceFeatureStudents(int role){
-        Class<?> type;
-        if(role ==1){
-            type = StudentUnivercity.class;
-        }else{
-            type = StudentHighSchool.class;
-        }
+        // khai báo Class - type
+        Class<? extends Student> type;
+        type = createClassByRole(role);
         boolean flag = true;
         while (flag){
             DisplayListStudents.displayChoiceFeature(role);
             int choice = sc.nextInt();
+            sc.nextLine();
             switch (choice){
                 case 1 :
-                    System.out.println(DisplayListStudents.getListStudentByType(list,type));
+                    DisplayListStudents.displayListStudent(type);
                     break;
                 case 2 :
                     System.out.println("Chức năng thêm mới sinh viên " );
-                    if(role ==1){
-                        Student s = inputUnivercityStudent();
-                        sts.addStudent(s);
-                    }else {
-                        Student s = inputHighSchoolStudent();
-                        sts.addStudent(s);
-                    }
-
+                    Student s = createStudentByRole(role);
+                    sts.addStudent(s);
                     break;
                 case 3 :
                     System.out.println("Chức năng cập nhật sinh viên");
@@ -83,15 +103,26 @@ public class FeatureChoice {
 
         }
     }
-    public Student inputUnivercityStudent(){
+
+    //method input Student
+    public StudentInfo inputStudent(){
         System.out.println(" Nhập vào mã sinh vien :  ");
-        String masv = sc.nextLine();
+        int masv = sc.nextInt();
+        //clear Scanner (enter)
+        sc.nextLine();
         System.out.println(" Nhập vào ten sinh vien :  ");
         String hoten = sc.nextLine();
         System.out.println(" Nhập vào tuoi sinh vien :  ");
         int tuoi = sc.nextInt();
         System.out.println(" Nhập vào gpa sinh vien :  ");
         double gpa = sc.nextDouble();
+        return new StudentInfo(masv,hoten,tuoi,gpa);
+
+    }
+
+    //method input UnivercityStudent
+    public Student inputUnivercityStudent(){
+        StudentInfo info = inputStudent();
         System.out.println(" Nhập vào diem toan :  ");
         double diemToan = sc.nextDouble();
         System.out.println(" Nhập vào diem ly:  ");
@@ -99,7 +130,21 @@ public class FeatureChoice {
         System.out.println(" Nhập vào diem hoa :  ");
         double diemHoa = sc.nextDouble();
         sc.nextLine();
-        return new StudentUnivercity(masv,hoten,tuoi,gpa,diemToan,diemLy,diemHoa);
+        return new StudentUnivercity(info.getId(),info.getName(),info.getAge(),info.getGpa(),diemToan,diemLy,diemHoa);
+    }
+
+
+    //method input HighSchoolStudent
+    public Student inputHighSchoolStudent(){
+        StudentInfo info = inputStudent();
+        System.out.println("Nhập vào điểm toán");
+        double diemToan = sc.nextDouble();
+        System.out.println("Nhập vào điểm văn ");
+        double diemVan = sc.nextDouble();
+        System.out.println(" Nhập vào điểm Anh  ");
+        double diemAnh = sc.nextDouble();
+        sc.nextLine();
+        return new StudentHighSchool(info.getId(),info.getName(),info.getAge(),info.getGpa(),diemToan,diemVan,diemAnh);
     }
 
 }

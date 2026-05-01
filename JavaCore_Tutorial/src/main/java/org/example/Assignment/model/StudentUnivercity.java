@@ -13,15 +13,11 @@ public class StudentUnivercity extends Student{
         return (this.gpa + this.scoreMath + this.scorePhysics + this.scoreChemistry)/3;
     }
 
-    public StudentUnivercity(String id , String name , int age , double gpa , double scoreMath, double scorePhysics, double scoreChemistry) {
+    public StudentUnivercity(int id , String name , int age , double gpa , double scoreMath, double scorePhysics, double scoreChemistry) {
         super(id,name,age,gpa);
         this.scoreMath = scoreMath;
         this.scorePhysics = scorePhysics;
         this.scoreChemistry = scoreChemistry;
-    }
-
-    public StudentUnivercity(String id, String name, int age, double gpa) {
-        super(id, name, age, gpa);
     }
 
     public double getScoreMath() {

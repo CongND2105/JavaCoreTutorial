@@ -1,29 +1,24 @@
 package org.example.Assignment.model;
 
-public abstract class Student {
-    protected int id ;
-    protected String name;
-    protected int age;
-    protected double gpa; // tổng điểm trong quá trình học
+public class StudentInfo {
 
-    public Student(int id, String name, int age, double gpa) {
+    //Create Class StudentInfo reference đến Student nhập xuất Student (tránh duplicate code)
+
+
+    private int id ;
+    private String name;
+    private int age ;
+    private double gpa;
+
+    public StudentInfo() {
+    }
+
+    public StudentInfo(int id, String name, int age, double gpa) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.gpa = gpa;
     }
-
-    @Override
-    public String toString() {
-        return "Student" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", gpa=" + gpa ;
-
-    }
-    //tính điểm trung bình
-     abstract protected double averageGpa();
 
     public int getId() {
         return id;

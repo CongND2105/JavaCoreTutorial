@@ -10,47 +10,29 @@ import java.util.ArrayList;
 
 public class DisplayListStudents {
 
+    // khai báo 1 List chứa toàn bộ sinh vien
     static ArrayList<Student> list = DataStudent.list;
 
-
     //method hiển thị list Student
-    public static void displayListStudent(){
-        System.out.println(list);
-    }
+    public static void displayListStudent(Class<? extends Student> type){
+        ArrayList<? extends Student> displayList = getListStudentByType(list,type);
+        System.out.println("Danh Sách Sinh Viên : " +type.getSimpleName());
+        System.out.println(displayList);
 
-    // method lấy ra những sinh viên thuộc Univercity và add vào ListUnivercity
-    public static ArrayList<Student> getListStudentUnivercity(ArrayList<Student> st){
-        ArrayList<Student> listUnivercity = new ArrayList<>();
-        for(int i = 0 ; i < st.size() ; i ++){
-            if(st.get(i) instanceof StudentUnivercity){
-                listUnivercity.add(st.get(i));
-            }
-        }
-       return listUnivercity;
-    }
 
-    // method lấy ra những sinh viên thuộc HighSchool và add vào ListHighSchool
-    public static ArrayList<Student> getListStudentHighSchool(ArrayList<Student> st){
-        ArrayList<Student> listHighSchool = new ArrayList<>();
-        for(Student s : st){
-            if(s instanceof StudentHighSchool){
-                listHighSchool.add(s);
-            }
-        }
-        return listHighSchool;
     }
 
     //method generic giúp tối ưu , không lặp code, lấy đúng ra danh sách mình cần tìm
-    public static <T extends Student> ArrayList<T> getListStudentByType(ArrayList<Student> list, Class<?> type){
+    public static<T extends Student> ArrayList<T> getListStudentByType(ArrayList<Student> list, Class<T> type){
         ArrayList<T> result = new ArrayList<>();
         for(Student st : list){
             if(type.isInstance(st)){
-                result.add((T) type.cast(st));
+                result.add(type.cast(st));
             }
         }
        return result;
     }
-
+    
     //method hiển thị lựa chọn trường
     public static void displayChoiceSchool(){
         System.out.println("==========================================");

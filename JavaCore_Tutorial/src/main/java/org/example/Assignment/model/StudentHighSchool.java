@@ -5,7 +5,7 @@ public class StudentHighSchool extends Student {
     private double scoreLiterature; // điểm ngữ văn
     private double scoreEnglish;  // điểm tiếng anh
 
-    public StudentHighSchool(String id, String name, int age, double gpa, double scoreMath, double scoreLiterature, double scoreEnglish) {
+    public StudentHighSchool(int id, String name, int age, double gpa, double scoreMath, double scoreLiterature, double scoreEnglish) {
         super(id, name, age, gpa);
         this.scoreMath = scoreMath;
         this.scoreLiterature = scoreLiterature;
