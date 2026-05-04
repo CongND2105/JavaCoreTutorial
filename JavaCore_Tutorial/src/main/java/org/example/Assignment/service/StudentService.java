@@ -12,7 +12,8 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public void updateStudent(Student student) {
+    public void updateStudent(Student student,int id) {
+        DataStudent.list.set(id-1,student);
 
     }
 
@@ -23,11 +24,19 @@ public class StudentService implements IStudentService {
 
     @Override
     public Student findStudentById(int id) {
+        for(Student s: DataStudent.list){
+            if(s.getId()==id){
+                System.out.println("Có tồn tại id : " +s.getId());
+                System.out.println(s);
+                return s;
+            }
+        }
         return null;
     }
 
     @Override
     public ArrayList<Student> findAllStudents() {
-        return null;
+
+        return DataStudent.list;
     }
 }

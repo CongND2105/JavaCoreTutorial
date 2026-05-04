@@ -1,5 +1,7 @@
 package org.example.Assignment.model;
 
+import java.util.Scanner;
+
 public class StudentUnivercity extends Student{
     private double scoreMath;  // điểm môn toán
     private double scorePhysics; // điểm môn Lý
@@ -11,6 +13,13 @@ public class StudentUnivercity extends Student{
     }
      public double averageGpa(){
         return (this.gpa + this.scoreMath + this.scorePhysics + this.scoreChemistry)/3;
+    }
+
+    @Override
+    public void update(Scanner scanner) {
+        System.out.println("Nhập tên Sinh Viên cần sửa ");
+        this.name = scanner.nextLine();
+        System.out.println("sửa thành công");
     }
 
     public StudentUnivercity(int id , String name , int age , double gpa , double scoreMath, double scorePhysics, double scoreChemistry) {

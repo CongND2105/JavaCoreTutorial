@@ -15,6 +15,8 @@ public class DisplayListStudents {
 
     //method hiển thị list Student
     public static void displayListStudent(Class<? extends Student> type){
+        // tạo 1 biến displayList để chứa các sinh viên theo type và hứng method getListStudentByType
+        // <? extends Student> có nghĩa là chấp nhận tất cả nhưng nó phải kế thừa từ Student
         ArrayList<? extends Student> displayList = getListStudentByType(list,type);
         System.out.println("Danh Sách Sinh Viên : " +type.getSimpleName());
         System.out.println(displayList);
@@ -24,15 +26,17 @@ public class DisplayListStudents {
 
     //method generic giúp tối ưu , không lặp code, lấy đúng ra danh sách mình cần tìm
     public static<T extends Student> ArrayList<T> getListStudentByType(ArrayList<Student> list, Class<T> type){
+        //Khởi tạo 1 ArrayList mới để chứa List Student cụ thể
         ArrayList<T> result = new ArrayList<>();
         for(Student st : list){
+            // nếu Student là 1 type (Class) thì sẽ add vào List mới
             if(type.isInstance(st)){
+                // add vào list mới và cast kiểu st về type
                 result.add(type.cast(st));
             }
         }
        return result;
     }
-    
     //method hiển thị lựa chọn trường
     public static void displayChoiceSchool(){
         System.out.println("==========================================");

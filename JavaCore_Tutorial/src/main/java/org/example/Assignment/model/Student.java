@@ -1,5 +1,7 @@
 package org.example.Assignment.model;
 
+import java.util.Scanner;
+
 public abstract class Student {
     protected int id ;
     protected String name;
@@ -24,6 +26,7 @@ public abstract class Student {
     }
     //tính điểm trung bình
      abstract protected double averageGpa();
+    abstract public void update(Scanner scanner) ;
 
     public int getId() {
         return id;

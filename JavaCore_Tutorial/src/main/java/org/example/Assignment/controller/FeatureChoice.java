@@ -18,16 +18,19 @@ public class FeatureChoice {
     public void choiceMain(){
         boolean flag = true ;
         while(flag){
+            //hiển thị màn hình chọn dối tượng Student cụ thể . ví dụ : StudentUnivercity or StudentHighSchool
             DisplayListStudents.displayChoiceSchool();
-            int choice = sc.nextInt();
+            int role = sc.nextInt();
+            //clear buffer
             sc.nextLine();
-            switch (choice){
+            switch (role){
                 case 1 :
-                    choiceFeatureStudents(choice);
+                    //choiceFeatureStudents(role) để xác định được sẽ thực hiện các thao tác với loại Student nào
+                    choiceFeatureStudents(role);
                     flag = false;
                     break;
                 case 2 :
-                    choiceFeatureStudents(choice);
+                    choiceFeatureStudents(role);
                     flag = false;
                     break;
                 case 3 :
@@ -41,6 +44,52 @@ public class FeatureChoice {
 
     }
 
+    //method chọn chức năng của sinh viên
+    //role được truyền vào từ người dùng qua method ChoiceMain
+    public void choiceFeatureStudents(int role){
+        Class<? extends Student> type;
+        //type = 1 method lấy ra được class từ role truyền vào của người dùng
+        type = createClassByRole(role);
+        boolean flag = true;
+        while (flag){
+            // hiển thị các tính năng của 1 Student cụ thể
+            DisplayListStudents.displayChoiceFeature(role);
+            int choice = sc.nextInt();
+            //clear buffer
+            sc.nextLine();
+            switch (choice){
+                case 1 :
+                    // hiển thị danh sách 1 Student cụ thể , Univercity or HighSchool
+                    DisplayListStudents.displayListStudent(type);
+                    break;
+                case 2 :
+                    System.out.println("Chức năng thêm mới sinh viên " );
+                    Student s = createStudentByRole(role);
+                    sts.addStudent(s);
+                    break;
+                case 3 :
+                    System.out.println("Chức năng cập nhật sinh viên");
+                    int idUpdate = inputIdForUpdate();
+                    Student stUpdate = sts.findStudentById(idUpdate);
+                    if(stUpdate == null){
+                        System.out.println("Không tìm thấy sinh viên");
+                        break;
+                    }
+                    stUpdate.update(sc);
+                    break;
+                case 4 :
+                    System.out.println("Chức năng xóa sinh viên ");
+                    flag = false;
+                    break;
+                case 5 :
+                    System.exit(0);
+                default:
+                    System.out.println("Vui lòng chọn đúng chức năng");
+            }
+
+        }
+    }
+    
     //method tạo sinh viên bởi role
     public Student createStudentByRole(int role){
         switch (role){
@@ -56,51 +105,15 @@ public class FeatureChoice {
 
     //method createClassbyRole
     public Class<?extends Student> createClassByRole(int role) {
-        Class<? extends Student> clazz;
+
         switch (role) {
             case 1:
-                return clazz = StudentUnivercity.class;
+                return StudentUnivercity.class;
             case 2:
-                return clazz = StudentHighSchool.class;
+                return StudentHighSchool.class;
             default:
                 System.out.println("Không có class hợp lệ");
                 return null;
-        }
-    }
-
-    //method chọn chức năng của sinh viên
-    public void choiceFeatureStudents(int role){
-        // khai báo Class - type
-        Class<? extends Student> type;
-        type = createClassByRole(role);
-        boolean flag = true;
-        while (flag){
-            DisplayListStudents.displayChoiceFeature(role);
-            int choice = sc.nextInt();
-            sc.nextLine();
-            switch (choice){
-                case 1 :
-                    DisplayListStudents.displayListStudent(type);
-                    break;
-                case 2 :
-                    System.out.println("Chức năng thêm mới sinh viên " );
-                    Student s = createStudentByRole(role);
-                    sts.addStudent(s);
-                    break;
-                case 3 :
-                    System.out.println("Chức năng cập nhật sinh viên");
-                    flag = false;
-                    break;
-                case 4 :
-                    System.out.println("Chức năng xóa sinh viên ");
-                    flag = false;
-                    break;
-                case 5 :
-                    System.exit(0);
-                default:
-                    System.out.println("Vui lòng chọn đúng chức năng");
-            }
-
         }
     }
 
@@ -133,7 +146,6 @@ public class FeatureChoice {
         return new StudentUnivercity(info.getId(),info.getName(),info.getAge(),info.getGpa(),diemToan,diemLy,diemHoa);
     }
 
-
     //method input HighSchoolStudent
     public Student inputHighSchoolStudent(){
         StudentInfo info = inputStudent();
@@ -147,4 +159,18 @@ public class FeatureChoice {
         return new StudentHighSchool(info.getId(),info.getName(),info.getAge(),info.getGpa(),diemToan,diemVan,diemAnh);
     }
 
+    //method input id of update Student
+    public int inputIdForUpdate(){
+        while(true){
+            System.out.println("Nhập vào id sinh viên cần chỉnh sửa");
+            int id = sc.nextInt();
+            sc.nextLine();
+           if(sts.findStudentById(id) != null){
+               return id;
+           }
+            System.out.println("id không tồn tại trong hệ thống");
+        }
+    }
 }
+
+
