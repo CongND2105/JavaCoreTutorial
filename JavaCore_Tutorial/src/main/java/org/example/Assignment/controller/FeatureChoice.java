@@ -6,14 +6,17 @@ import org.example.Assignment.model.StudentInfo;
 import org.example.Assignment.model.StudentUnivercity;
 import org.example.Assignment.repository.DataStudent;
 import org.example.Assignment.service.StudentService;
+import org.example.Assignment.view.DisplayListStudents;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FeatureChoice {
 
+    DataStudent dataStudent = new DataStudent();
     Scanner sc = new Scanner(System.in);
-    StudentService sts= new StudentService();
+    StudentService sts= new StudentService(dataStudent.getList());
+    DisplayListStudents displayListStudents = new DisplayListStudents();
 
     public void choiceMain(){
         boolean flag = true ;
@@ -38,10 +41,7 @@ public class FeatureChoice {
                 default:
                     System.out.println("Vui Lòng chọn đúng số");
             }
-
         }
-
-
     }
 
     //method chọn chức năng của sinh viên
@@ -53,29 +53,33 @@ public class FeatureChoice {
         boolean flag = true;
         while (flag){
             // hiển thị các tính năng của 1 Student cụ thể
-            DisplayListStudents.displayChoiceFeature(role);
+            displayListStudents.displayChoiceFeature(role);
             int choice = sc.nextInt();
             //clear buffer
             sc.nextLine();
             switch (choice){
                 case 1 :
                     // hiển thị danh sách 1 Student cụ thể , Univercity or HighSchool
-                    DisplayListStudents.displayListStudent(type);
+                    List<? extends Student> students = sts.getListStudentByType(sts.findAll(), type);
+                    displayListStudents.displayListStudent(students,type);
                     break;
                 case 2 :
                     System.out.println("Chức năng thêm mới sinh viên " );
                     Student s = createStudentByRole(role);
                     sts.addStudent(s);
+                    System.out.println("Thêm thành công ");
                     break;
                 case 3 :
                     System.out.println("Chức năng cập nhật sinh viên");
                     int idUpdate = inputIdForUpdate();
                     Student stUpdate = sts.findStudentById(idUpdate);
+                    Student newData = createStudentByRole(role);
                     if(stUpdate == null){
                         System.out.println("Không tìm thấy sinh viên");
                         break;
                     }
-                    stUpdate.update(sc);
+                    stUpdate.update(newData);
+                    System.out.println("Cập nhật thành công");
                     break;
                 case 4 :
                     System.out.println("Chức năng xóa sinh viên ");
@@ -89,7 +93,7 @@ public class FeatureChoice {
 
         }
     }
-    
+
     //method tạo sinh viên bởi role
     public Student createStudentByRole(int role){
         switch (role){

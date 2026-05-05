@@ -16,10 +16,8 @@ public class StudentUnivercity extends Student{
     }
 
     @Override
-    public void update(Scanner scanner) {
-        System.out.println("Nhập tên Sinh Viên cần sửa ");
-        this.name = scanner.nextLine();
-        System.out.println("sửa thành công");
+    public void update(Student student) {
+        this.name = student.getName();
     }
 
     public StudentUnivercity(int id , String name , int age , double gpa , double scoreMath, double scorePhysics, double scoreChemistry) {

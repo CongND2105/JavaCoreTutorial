@@ -26,7 +26,7 @@ public abstract class Student {
     }
     //tính điểm trung bình
      abstract protected double averageGpa();
-    abstract public void update(Scanner scanner) ;
+    abstract public void update(Student student) ;
 
     public int getId() {
         return id;

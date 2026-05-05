@@ -1,42 +1,18 @@
-package org.example.Assignment.controller;
+package org.example.Assignment.view;
 
 import org.example.Assignment.model.Student;
-import org.example.Assignment.model.StudentHighSchool;
-import org.example.Assignment.model.StudentUnivercity;
-import org.example.Assignment.Utils;
-import org.example.Assignment.repository.DataStudent;
+import org.example.Assignment.service.StudentService;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class DisplayListStudents {
 
-    // khai báo 1 List chứa toàn bộ sinh vien
-    static ArrayList<Student> list = DataStudent.list;
-
     //method hiển thị list Student
-    public static void displayListStudent(Class<? extends Student> type){
-        // tạo 1 biến displayList để chứa các sinh viên theo type và hứng method getListStudentByType
-        // <? extends Student> có nghĩa là chấp nhận tất cả nhưng nó phải kế thừa từ Student
-        ArrayList<? extends Student> displayList = getListStudentByType(list,type);
+    public void displayListStudent(List<? extends Student> list, Class<? extends Student> type){
         System.out.println("Danh Sách Sinh Viên : " +type.getSimpleName());
-        System.out.println(displayList);
-
-
+        System.out.println(list);
     }
 
-    //method generic giúp tối ưu , không lặp code, lấy đúng ra danh sách mình cần tìm
-    public static<T extends Student> ArrayList<T> getListStudentByType(ArrayList<Student> list, Class<T> type){
-        //Khởi tạo 1 ArrayList mới để chứa List Student cụ thể
-        ArrayList<T> result = new ArrayList<>();
-        for(Student st : list){
-            // nếu Student là 1 type (Class) thì sẽ add vào List mới
-            if(type.isInstance(st)){
-                // add vào list mới và cast kiểu st về type
-                result.add(type.cast(st));
-            }
-        }
-       return result;
-    }
     //method hiển thị lựa chọn trường
     public static void displayChoiceSchool(){
         System.out.println("==========================================");
@@ -49,7 +25,7 @@ public class DisplayListStudents {
     }
 
     //method hiển thị chức năng trường
-    public static void displayChoiceFeature(int role){
+    public void displayChoiceFeature(int role){
         String roleName;
         if(role ==1){
             roleName = "Đại Học";

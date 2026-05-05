@@ -49,9 +49,7 @@ public class StudentHighSchool extends Student {
     }
 
     @Override
-    public void update(Scanner scanner) {
-        System.out.println("Nhập vào tên cần sửa (High School)");
-        this.name = scanner.nextLine();
-        System.out.println("Cập nhật thành công");
+    public void update(Student student) {
+       this.name = student.getName();
     }
 }
