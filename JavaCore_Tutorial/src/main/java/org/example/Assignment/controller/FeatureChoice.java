@@ -8,6 +8,7 @@ import org.example.Assignment.repository.DataStudent;
 import org.example.Assignment.service.StudentService;
 import org.example.Assignment.view.DisplayListStudents;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -71,7 +72,7 @@ public class FeatureChoice {
                     break;
                 case 3 :
                     System.out.println("Chức năng cập nhật sinh viên");
-                    int idUpdate = inputIdForUpdate();
+                    int idUpdate = inputId();
                     Student stUpdate = sts.findStudentById(idUpdate);
                     Student newData = createStudentByRole(role);
                     if(stUpdate == null){
@@ -83,7 +84,7 @@ public class FeatureChoice {
                     break;
                 case 4 :
                     System.out.println("Chức năng xóa sinh viên ");
-                    flag = false;
+                    deleteStudent();
                     break;
                 case 5 :
                     System.exit(0);
@@ -164,9 +165,9 @@ public class FeatureChoice {
     }
 
     //method input id of update Student
-    public int inputIdForUpdate(){
+    public int inputId(){
         while(true){
-            System.out.println("Nhập vào id sinh viên cần chỉnh sửa");
+            System.out.println("Nhập vào id sinh viên");
             int id = sc.nextInt();
             sc.nextLine();
            if(sts.findStudentById(id) != null){
@@ -174,6 +175,27 @@ public class FeatureChoice {
            }
             System.out.println("id không tồn tại trong hệ thống");
         }
+    }
+
+    //method delete student
+    private void deleteStudent(){
+        int idDelete = inputId();
+        List<Student> stDelete = sts.findAll();
+        Student studentTemp = null;
+        for(Student st : stDelete){
+            if(st.getId() == idDelete){
+                System.out.println("tìm thấy sinh viên cần xóa");
+                studentTemp = st;
+                break;
+            }
+        }
+        if(studentTemp !=null){
+            sts.deleteStudent(studentTemp);
+            System.out.println("Xóa thành công");
+        }else {
+            System.out.println("Không tìm thấy sinh viên");
+        }
+
     }
 }
 
