@@ -1,5 +1,7 @@
 package org.example.Assignment.model;
 
+import org.example.Assignment.utils.ValidationUtil;
+
 import java.util.Scanner;
 
 public class StudentUnivercity extends Student{
@@ -20,6 +22,10 @@ public class StudentUnivercity extends Student{
         this.name = student.getName();
     }
 
+    public StudentUnivercity(int id, String name, int age, double gpa) {
+        super(id, name, age, gpa);
+    }
+
     public StudentUnivercity(int id , String name , int age , double gpa , double scoreMath, double scorePhysics, double scoreChemistry) {
         super(id,name,age,gpa);
         this.scoreMath = scoreMath;
@@ -32,6 +38,7 @@ public class StudentUnivercity extends Student{
     }
 
     public void setScoreMath(double scoreMath) {
+        ValidationUtil.checkGpa(scoreMath);
         this.scoreMath = scoreMath;
     }
 
@@ -40,6 +47,7 @@ public class StudentUnivercity extends Student{
     }
 
     public void setScorePhysics(double scorePhysics) {
+        ValidationUtil.checkGpa(scorePhysics);
         this.scorePhysics = scorePhysics;
     }
 
@@ -48,6 +56,7 @@ public class StudentUnivercity extends Student{
     }
 
     public void setScoreChemistry(double scoreChemistry) {
+        ValidationUtil.checkGpa(scoreChemistry);
         this.scoreChemistry = scoreChemistry;
     }
 }

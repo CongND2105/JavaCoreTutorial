@@ -1,5 +1,7 @@
 package org.example.Assignment.model;
 
+import org.example.Assignment.utils.ValidationUtil;
+
 public class StudentInfo {
 
     //Create Class StudentInfo reference đến Student nhập xuất Student (tránh duplicate code)
@@ -40,7 +42,8 @@ public class StudentInfo {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(int age) throws IllegalArgumentException {
+        ValidationUtil.checkAge(age);
         this.age = age;
     }
 
@@ -49,6 +52,7 @@ public class StudentInfo {
     }
 
     public void setGpa(double gpa) {
+        ValidationUtil.checkGpa(gpa);
         this.gpa = gpa;
     }
 }

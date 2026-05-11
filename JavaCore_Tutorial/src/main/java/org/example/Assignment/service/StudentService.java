@@ -9,20 +9,34 @@ public class StudentService implements IStudentService {
     private final List<Student> list;
 
     public StudentService(List<Student> list){
+
         this.list = list;
     }
-
-    public List<Student> findAll(){
-        return list;
-    }
-
+    @Override
     public void addStudent(Student st){
-       list.add(st);
+        list.add(st);
     }
 
     @Override
+    public List<Student> findAllStudents(){
+        return list;
+    }
+    @Override
     public void updateStudent(Student student,int id) {
-        list.set(id-1,student);
+        int index = -1 ;
+        for(int i = 0 ; i < list.size(); i++){
+            if(list.get(i).getId() == id){
+                index = i;
+                break;
+            }
+        }
+        if(index != -1){
+            list.set(index,student);
+            System.out.println("Successfully updated student with id "+student.getId());
+        }else {
+            System.out.println("Student not found");
+        }
+
 
     }
 
@@ -41,10 +55,6 @@ public class StudentService implements IStudentService {
         return null;
     }
 
-    @Override
-    public List<Student> findAllStudents() {
-        return list;
-    }
     //method generic giúp tối ưu , không lặp code, lấy đúng ra danh sách mình cần tìm
     public <T extends Student> ArrayList<T> getListStudentByType(List<Student> list, Class<T> type){
         //Khởi tạo 1 ArrayList mới để chứa List Student cụ thể

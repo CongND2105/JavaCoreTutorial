@@ -1,5 +1,7 @@
 package org.example.Assignment.model;
 
+import org.example.Assignment.utils.ValidationUtil;
+
 import java.util.Scanner;
 
 public class StudentHighSchool extends Student {
@@ -19,11 +21,16 @@ public class StudentHighSchool extends Student {
         return super.toString() + " điểm toán : " + this.scoreMath + " điểm văn : " + this.scoreLiterature + " điểm Anh : " + this.scoreEnglish +"\n";
     }
 
+    public StudentHighSchool(int id, String name, int age, double gpa) {
+        super(id, name, age, gpa);
+    }
+
     public double getScoreMath() {
         return scoreMath;
     }
 
     public void setScoreMath(double scoreMath) {
+        ValidationUtil.checkGpa(scoreMath);
         this.scoreMath = scoreMath;
     }
 
@@ -32,6 +39,7 @@ public class StudentHighSchool extends Student {
     }
 
     public void setScoreLiterature(double scoreLiterature) {
+        ValidationUtil.checkGpa(scoreLiterature);
         this.scoreLiterature = scoreLiterature;
     }
 
@@ -40,6 +48,7 @@ public class StudentHighSchool extends Student {
     }
 
     public void setScoreEnglish(double scoreEnglish) {
+        ValidationUtil.checkGpa(scoreEnglish);
         this.scoreEnglish = scoreEnglish;
     }
 
