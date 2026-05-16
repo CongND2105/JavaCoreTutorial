@@ -17,19 +17,17 @@ public class FeatureChoice {
 
     DisplayListStudents displayListStudents = new DisplayListStudents();
     Input input = new Input();
+
     public void choiceMain(){
-        boolean flag = true ;
-        while(flag){
+        while(true){
             //hiển thị màn hình chọn dối tượng Student cụ thể . ví dụ : StudentUnivercity or StudentHighSchool
             int role = input.getMenuMain();
             switch (role){
                 case 1 :
                     choiceFeatureStudents(role);
-                    flag = false;
                     break;
                 case 2 :
                     choiceFeatureStudents(role);
-                    flag = false;
                     break;
                 case 3 :
                     System.exit(0);
@@ -65,6 +63,9 @@ public class FeatureChoice {
                     input.deleteStudent();
                     break;
                 case 5 :
+                    System.out.println("Quay lại trang chính ");
+                    choiceMain();
+                case 6 :
                     System.exit(0);
                 default:
                     System.out.println("Vui lòng chọn đúng chức năng");

@@ -1,5 +1,7 @@
 package org.example.Assignment.model;
 
+import org.example.Assignment.utils.ValidationUtil;
+
 import java.util.Scanner;
 
 public abstract class Student {
@@ -26,7 +28,6 @@ public abstract class Student {
     }
     //tính điểm trung bình
      abstract protected double averageGpa();
-    abstract public void update(Student student) ;
 
     public int getId() {
         return id;
@@ -50,6 +51,7 @@ public abstract class Student {
     }
 
     public void setAge(int age) {
+        ValidationUtil.checkAge(age);
         this.age = age;
     }
 
@@ -58,6 +60,7 @@ public abstract class Student {
     }
 
     public void setGpa(double gpa) {
+        ValidationUtil.checkGpa(gpa);
         this.gpa = gpa;
     }
 }

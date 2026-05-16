@@ -57,8 +57,4 @@ public class StudentHighSchool extends Student {
         return (this.gpa + this.scoreMath + this.scoreLiterature + this.scoreEnglish)/4;
     }
 
-    @Override
-    public void update(Student student) {
-       this.name = student.getName();
-    }
 }

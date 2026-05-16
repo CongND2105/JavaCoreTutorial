@@ -40,6 +40,53 @@ public class Input {
         DisplayListStudents.displayListStudent(students,type);
     }
 
+    //method input information update Student
+    public Student inputUpdateStudent(Student st,int role){
+        while (true){
+            try{
+                System.out.println("Nhập tên mới :");
+                st.setName(sc.nextLine());
+                System.out.println("Nhập tuổi mới : ");
+                st.setAge(sc.nextInt());
+                sc.nextLine();
+                System.out.println("Nhập GPA mới : ");
+                st.setGpa(sc.nextDouble());
+                sc.nextLine();
+                castStudentSpecific(st);
+                break;
+            }catch (IllegalArgumentException e){
+                 System.out.println("Error : " + e.getMessage());
+                 sc.nextLine();
+        }
+        }
+        return st;
+    }
+
+    //method cast Student -> Student specific
+    public void castStudentSpecific(Student student){
+        if(student instanceof StudentUnivercity st){
+            System.out.println("Nhập điểm toán mới : ");
+            st.setScoreMath(sc.nextDouble());
+            sc.nextLine();
+            System.out.println(" Nhập điểm Lý mới :  ");
+            st.setScorePhysics(sc.nextDouble());
+            sc.nextLine();
+            System.out.println("Nhập điểm Hóa mới :");
+            st.setScoreChemistry(sc.nextDouble());
+            sc.nextLine();
+        } else if (student instanceof StudentHighSchool st) {
+            System.out.println("Nhập điểm toán mới : ");
+            st.setScoreMath(sc.nextDouble());
+            sc.nextLine();
+            System.out.println(" Nhập điểm Văn mới :  ");
+            st.setScoreLiterature(sc.nextDouble());
+            sc.nextLine();
+            System.out.println("Nhập điểm Anh mới :");
+            st.setScoreEnglish(sc.nextDouble());
+            sc.nextLine();
+        }
+
+    }
     //method input Student
     public StudentInfo inputStudent(){
         StudentInfo studentInfo = new StudentInfo();
@@ -104,8 +151,8 @@ public class Input {
     public void updateStudent(int role){
         int idUpdate = inputId();
         Student studentUpdate = sts.findStudentById(idUpdate);
-        Student newData = createStudentByRole(role);
-        studentUpdate.update(newData);
+        Student newData = inputUpdateStudent(studentUpdate,role);
+        sts.updateStudent(newData,idUpdate);
         System.out.println("Cập nhật thành công");
 
     }

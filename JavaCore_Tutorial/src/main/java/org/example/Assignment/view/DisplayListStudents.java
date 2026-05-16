@@ -39,7 +39,8 @@ public class DisplayListStudents {
         System.out.println("2 . Thêm mới Sinh Viên  ");
         System.out.println("3 . Cập nhật Sinh Viên ");
         System.out.println("4 . Xóa Sinh Viên ");
-        System.out.println("5 . Exit");
+        System.out.println("5 . Quay lại trang chính ");
+        System.out.println("6 . Exit");
         System.out.println("==========================================");
     }
 

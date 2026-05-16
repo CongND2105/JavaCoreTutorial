@@ -17,10 +17,6 @@ public class StudentUnivercity extends Student{
         return (this.gpa + this.scoreMath + this.scorePhysics + this.scoreChemistry)/3;
     }
 
-    @Override
-    public void update(Student student) {
-        this.name = student.getName();
-    }
 
     public StudentUnivercity(int id, String name, int age, double gpa) {
         super(id, name, age, gpa);
