@@ -16,19 +16,30 @@ public class Input {
     DataStudent dataStudent = new DataStudent();
     StudentService sts= new StudentService(dataStudent.getList());
 
-    //Gọi ra Menu Main và lấy ra giá trị choice
-    public int getMenuMain(){
+    /**
+     * Hiển thị menu chính và nhận lựa chọn người dùng.
+     *
+     * @return lựa chọn của người dùng
+     */
+    public int getMenuMain() {
         DisplayListStudents.displayChoiceSchool();
         int choice = sc.nextInt();
         sc.nextLine();
+
         return choice;
     }
 
-    //Gọi ra menu chọn các chức năng thao tác với Student
-    public int getMenuFeature(int role){
+    /**
+     * Hiển thị menu chức năng và nhận lựa chọn người dùng.
+     *
+     * @param role vai trò của sinh viên
+     * @return lựa chọn của người dùng
+     */
+    public int getMenuFeature(int role) {
         DisplayListStudents.displayChoiceFeature(role);
         int choice = sc.nextInt();
         sc.nextLine();
+
         return choice;
     }
 

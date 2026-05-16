@@ -15,13 +15,16 @@ public class DisplayListStudents {
 
     //method hiển thị lựa chọn trường
     public static void displayChoiceSchool(){
-        System.out.println("==========================================");
-        System.out.println("Chào mừng đến với hệ thống Sinh Viên ");
-        System.out.println("Vui Lòng chọn 1 trong 2 sinh viên sau :  ");
-        System.out.println("1 . Sinh Viên Đại Học");
-        System.out.println("2 . Sinh Viên Phổ Thông ");
-        System.out.println("3 . Exit");
-        System.out.println("==========================================");
+        String menus = """
+            ==========================================
+            Chào mừng đến với hệ thống Sinh Viên
+            Vui lòng chọn 1 trong 3 lựa chọn sau:
+            1. Sinh Viên Đại Học
+            2. Sinh Viên Phổ Thông
+            3. Exit
+            ==========================================
+        """;
+        System.out.print(menus);
     }
 
     //method hiển thị chức năng trường

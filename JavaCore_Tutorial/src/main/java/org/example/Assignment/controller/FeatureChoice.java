@@ -1,25 +1,13 @@
 package org.example.Assignment.controller;
 
-import org.example.Assignment.model.Student;
-import org.example.Assignment.model.StudentHighSchool;
-import org.example.Assignment.model.StudentInfo;
-import org.example.Assignment.model.StudentUnivercity;
-import org.example.Assignment.repository.DataStudent;
-import org.example.Assignment.service.StudentService;
-import org.example.Assignment.view.DisplayListStudents;
 import org.example.Assignment.view.Input;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class FeatureChoice {
 
-    DisplayListStudents displayListStudents = new DisplayListStudents();
     Input input = new Input();
 
     public void choiceMain(){
-        while(true){
+        while (true) {
             //hiển thị màn hình chọn dối tượng Student cụ thể . ví dụ : StudentUnivercity or StudentHighSchool
             int role = input.getMenuMain();
             switch (role){
@@ -75,5 +63,3 @@ public class FeatureChoice {
     }
 
 }
-
-
