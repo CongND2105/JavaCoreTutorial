@@ -14,7 +14,7 @@ public class StudentService implements IStudentService {
     }
     @Override
     public void addStudent(Student st){
-        list.add(st);
+            list.add(st);
     }
 
     @Override
@@ -56,9 +56,9 @@ public class StudentService implements IStudentService {
     }
 
     //method generic giúp tối ưu , không lặp code, lấy đúng ra danh sách mình cần tìm
-    public <T extends Student> ArrayList<T> getListStudentByType(List<Student> list, Class<T> type){
+    public <T extends Student> List<T> getListStudentByType(List<Student> list, Class<T> type){
         //Khởi tạo 1 ArrayList mới để chứa List Student cụ thể
-        ArrayList<T> result = new ArrayList<>();
+        List<T> result = new ArrayList<>();
         for(Student st : list){
             // nếu Student là 1 type (Class) thì sẽ add vào List mới
             if(type.isInstance(st)){
@@ -68,4 +68,5 @@ public class StudentService implements IStudentService {
         }
         return result;
     }
+
 }

@@ -1,5 +1,6 @@
 package org.example.Assignment.view;
 
+import org.example.Assignment.enums.FeatureSelectionEnum;
 import org.example.Assignment.enums.RoleSelectionEnum;
 import org.example.Assignment.model.Student;
 import org.example.Assignment.model.StudentHighSchool;
@@ -8,6 +9,7 @@ import org.example.Assignment.model.StudentUnivercity;
 import org.example.Assignment.repository.DataStudent;
 import org.example.Assignment.service.StudentService;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,11 +24,18 @@ public class Input {
 	 * @return lựa chọn của người dùng
 	 */
 	public RoleSelectionEnum getMenuMain() {
-		DisplayListStudents.displayChoiceSchool();
-		int choice = sc.nextInt();
-		sc.nextLine();
-
-		return RoleSelectionEnum.getByValue(choice);
+		while(true){
+			try{
+				DisplayListStudents.displayChoiceSchool();
+				int choice = sc.nextInt();
+				sc.nextLine();
+				return RoleSelectionEnum.getByValue(choice);
+			} catch (InputMismatchException e) {
+				e.getMessage();
+				System.out.println("Có vẻ bạn đã nhập kí tự đặc biệt");
+				sc.nextLine();
+			}
+		}
 	}
 
 	/**
@@ -35,12 +44,11 @@ public class Input {
 	 * @param role vai trò của sinh viên
 	 * @return lựa chọn của người dùng
 	 */
-	public int getMenuFeature(RoleSelectionEnum role) {
+	public FeatureSelectionEnum getMenuFeature(RoleSelectionEnum role) {
 		DisplayListStudents.displayChoiceFeature(role);
 		int choice = sc.nextInt();
 		sc.nextLine();
-
-		return choice;
+		return FeatureSelectionEnum.getByValue(choice);
 	}
 
 	// method get List Student by Type
@@ -111,10 +119,7 @@ public class Input {
 		StudentInfo studentInfo = new StudentInfo();
 		while (true) {
 			try {
-				System.out.println(" Nhập vào mã sinh vien :  ");
-				studentInfo.setId(sc.nextInt());
-				//clear Scanner (enter)
-				sc.nextLine();
+				studentInfo.setId(getIdLastStudent());
 				System.out.println(" Nhập vào ten sinh vien :  ");
 				studentInfo.setName(sc.nextLine());
 				System.out.println(" Nhập vào tuoi sinh vien :  ");
@@ -127,6 +132,16 @@ public class Input {
 			}
 		}
 		return studentInfo;
+	}
+
+	public int getIdLastStudent(){
+		int maxId = 0;
+		for(Student st : sts.findAllStudents()){
+			if(st.getId()>maxId){
+				maxId = st.getId();
+			}
+		}
+		return maxId + 1;
 	}
 
 	//method input UnivercityStudent
@@ -248,7 +263,7 @@ public class Input {
 		switch (role) {
 			case UNIVERSITY:
 				return StudentUnivercity.class;
-			case EXIT:
+			case HIGH_SCHOOL:
 				return StudentHighSchool.class;
 			default:
 				System.out.println("Không có class hợp lệ");

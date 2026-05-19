@@ -1,8 +1,10 @@
 package org.example.Assignment.utils;
 
+import org.example.Assignment.service.StudentService;
+
 public class ValidationUtil {
     //check scores
-    public static  void checkGpa(double gpa) {
+    public static void checkGpa(double gpa) {
         if (gpa >10 || gpa <=0) {
             throw new IllegalArgumentException("Điểm không hợp lệ vui lòng nhập chính xác !!!");
         }
@@ -14,4 +16,5 @@ public class ValidationUtil {
             throw new IllegalArgumentException("Tuổi không hợp lệ vui lòng nhập lại");
         }
     }
+
 }
