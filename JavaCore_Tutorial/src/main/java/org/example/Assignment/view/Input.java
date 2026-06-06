@@ -134,6 +134,12 @@ public class Input {
 		return studentInfo;
 	}
 
+	/**
+	 * Chức năng lấy ra phần tử id cuối
+	 * 
+	 * @return id cuối cùng
+	 *
+	 */
 	public int getIdLastStudent(){
 		int maxId = 0;
 		for(Student st : sts.findAllStudents()){

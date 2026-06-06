@@ -19,7 +19,6 @@ public enum RoleSelectionEnum {
 				return role;
 			}
 		}
-
 		return null;
 	}
 
