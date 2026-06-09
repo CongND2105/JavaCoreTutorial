@@ -25,6 +25,31 @@ public class StringCompareExam {
         //compareToIgnoreCase so sánh < > = không phân biệt HOA thường .
         System.out.println("[compareToIgnoreCase]" + name1.compareToIgnoreCase(name2));
 
+        // regionMatches => so sánh một đoạn chuỗi
+        String r1 = "Nguyen Van Teo";
+        String r2 = "Van";
+        boolean check = r1.regionMatches(7,r2,0,3);
+        System.out.println("[regionMatches check] : "+check);
 
+        // startWith => Kiểm tra 1 chuỗi có được bắt đầu từ ... không ?
+        String sdt = "0789218271";
+        System.out.println("[StartWith] : " + sdt.startsWith("0789"));
+        System.out.println("[StartWith] : " + sdt.startsWith("0782"));
+
+        // endWith => kiểm tra 1 chuỗi có được kết thúc bằng ... không ?
+        String file = "text.txt";
+        String file2 = "learning book.pdf";
+        if(file.endsWith(".txt")){
+            System.out.println("đây là một file note pad .txt");
+        } else if (file.endsWith(".pdf")) {
+            System.out.println("đây là file sách .pdf");
+
+        }
+        if(file2.endsWith(".txt")){
+            System.out.println("đây là một file note pad .txt");
+        } else if (file2.endsWith(".pdf")) {
+            System.out.println("đây là file sách .pdf");
+
+        }
     }
 }
