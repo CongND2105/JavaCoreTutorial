@@ -54,6 +54,6 @@ public class SinhVien implements Comparable<SinhVien> {
     }
     @Override
     public int compareTo(SinhVien o) {
-        return (int) (o.getDiemTb() - this.getDiemTb());
+        return (int) (this.getDiemTb() - o.getDiemTb());
     }
 }
