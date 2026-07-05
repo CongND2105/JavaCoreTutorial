@@ -1,9 +1,6 @@
 package org.example.collection.set.prizeDraw;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 //3359
 
@@ -28,6 +25,12 @@ public class PrizeDraw {
     public void displayAllTicket(){
         System.out.println(Arrays.toString(this.prizeDrawBox.toArray()));
     }
+    public String prizeDraw(){
+        Random r = new Random();
+        int index = r.nextInt(prizeDrawBox.size());
+        return (String) this.prizeDrawBox.toArray()[index];
+
+    }
 
     public void menuPrizeDrawBox(){
             System.out.println("-----------------------------------");
@@ -41,53 +44,56 @@ public class PrizeDraw {
             System.out.println("0. Exit the game");
     }
     public String inputCode(){
-        System.out.println("Input code prize draw plss");
+        System.out.println("Input code in list prize");
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     }
 
     public void choice (){
-        menuPrizeDrawBox();
-        Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
-        switch (choice){
-            case 1 :
-                if(addTicket(inputCode())){
-                    System.out.println("add ticket successfully");
-                }else{
-                    System.out.println("Ticket already exists");
-                }
-                break;
-            case 2 :
-                if(deleteTicket(inputCode())){
-                    System.out.println("Delete ticket successfully !!!");
-                }else{
-                    System.out.println("Delete Eror");
-                }
-                break;
-            case 3 :
-                if(checkCodeExist(inputCode())){
-                    System.out.println("Code already exists in system prize draw");
-                }else{
-                    System.out.println("Not found code");
-                }
-                break;
-            case 4 :
-                deleteAllTicket();
-                break;
-            case 5:
-                quantityOfPrizeDrawTickets();
-                break;
-            case 6:
-                System.out.println("updating ......");
-                break;
-            case 7 :
-                displayAllTicket();
-                break;
-            case 0:
-                System.exit(0);
+        while(true){
+            menuPrizeDrawBox();
+            Scanner sc = new Scanner(System.in);
+            int choice = sc.nextInt();
+            switch (choice){
+                case 1 :
+                    if(addTicket(inputCode())){
+                        System.out.println("add ticket successfully");
+                    }else{
+                        System.out.println("Ticket already exists");
+                    }
+                    break;
+                case 2 :
+                    if(deleteTicket(inputCode())){
+                        System.out.println("Delete ticket successfully !!!");
+                    }else{
+                        System.out.println("Delete Eror");
+                    }
+                    break;
+                case 3 :
+                    if(checkCodeExist(inputCode())){
+                        System.out.println("Code already exists in system prize draw");
+                    }else{
+                        System.out.println("Not found code");
+                    }
+                    break;
+                case 4 :
+                    deleteAllTicket();
+                    break;
+                case 5:
+                    System.out.println("Quatity of prize draw tickets is : " +quantityOfPrizeDrawTickets());
+                    break;
+                case 6:
+                    System.out.println("Ticket with this code win a prize : " +prizeDraw());
+                    break;
+                case 7 :
+                    displayAllTicket();
+                    break;
+                case 0:
+                    System.exit(0);
 
+            }
         }
+
     }
 
 }
