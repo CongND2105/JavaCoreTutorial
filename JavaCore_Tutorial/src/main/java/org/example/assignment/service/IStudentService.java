@@ -1,8 +1,7 @@
-package org.example.Assignment.service;
+package org.example.assignment.service;
 
-import org.example.Assignment.model.Student;
+import org.example.assignment.model.Student;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface IStudentService {

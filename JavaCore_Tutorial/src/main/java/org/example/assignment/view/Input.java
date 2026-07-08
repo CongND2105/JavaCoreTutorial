@@ -1,13 +1,13 @@
-package org.example.Assignment.view;
+package org.example.assignment.view;
 
-import org.example.Assignment.enums.FeatureSelectionEnum;
-import org.example.Assignment.enums.RoleSelectionEnum;
-import org.example.Assignment.model.Student;
-import org.example.Assignment.model.StudentHighSchool;
-import org.example.Assignment.model.StudentInfo;
-import org.example.Assignment.model.StudentUnivercity;
-import org.example.Assignment.repository.DataStudent;
-import org.example.Assignment.service.StudentService;
+import org.example.assignment.enums.FeatureSelectionEnum;
+import org.example.assignment.enums.RoleSelectionEnum;
+import org.example.assignment.model.Student;
+import org.example.assignment.model.StudentHighSchool;
+import org.example.assignment.model.StudentInfo;
+import org.example.assignment.model.StudentUnivercity;
+import org.example.assignment.repository.DataStudent;
+import org.example.assignment.service.StudentService;
 
 import java.util.InputMismatchException;
 import java.util.List;

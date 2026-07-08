@@ -1,7 +1,7 @@
-package org.example.Assignment.view;
+package org.example.assignment.view;
 
-import org.example.Assignment.enums.RoleSelectionEnum;
-import org.example.Assignment.model.Student;
+import org.example.assignment.enums.RoleSelectionEnum;
+import org.example.assignment.model.Student;
 
 import java.util.List;
 

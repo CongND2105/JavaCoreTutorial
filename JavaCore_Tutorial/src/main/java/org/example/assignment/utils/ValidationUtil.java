@@ -1,6 +1,4 @@
-package org.example.Assignment.utils;
-
-import org.example.Assignment.service.StudentService;
+package org.example.assignment.utils;
 
 public class ValidationUtil {
     //check scores

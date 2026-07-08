@@ -1,8 +1,6 @@
-package org.example.Assignment.model;
+package org.example.assignment.model;
 
-import org.example.Assignment.utils.ValidationUtil;
-
-import java.util.Scanner;
+import org.example.assignment.utils.ValidationUtil;
 
 public abstract class Student {
     protected int id ;

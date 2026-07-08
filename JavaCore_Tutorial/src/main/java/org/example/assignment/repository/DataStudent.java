@@ -1,8 +1,8 @@
-package org.example.Assignment.repository;
+package org.example.assignment.repository;
 
-import org.example.Assignment.model.Student;
-import org.example.Assignment.model.StudentHighSchool;
-import org.example.Assignment.model.StudentUnivercity;
+import org.example.assignment.model.Student;
+import org.example.assignment.model.StudentHighSchool;
+import org.example.assignment.model.StudentUnivercity;
 
 import java.util.ArrayList;
 import java.util.List;

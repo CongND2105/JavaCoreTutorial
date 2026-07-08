@@ -1,4 +1,4 @@
-package org.example.Assignment.enums;
+package org.example.assignment.enums;
 
 public enum FeatureSelectionEnum {
     VIEW(1,"Danh Sách Sinh Viên"),

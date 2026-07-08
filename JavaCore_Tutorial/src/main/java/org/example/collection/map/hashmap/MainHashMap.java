@@ -6,11 +6,15 @@ public class MainHashMap {
     public static void main(String [] arr){
         Student st1 = new Student(1,"Cong");
         Student st2 = new Student(1,"Cong");
+        Object st3 = new Student(3,"Cong");
+        System.out.println(((Student) st3).getId());
         Map<Integer, Student> listStudent = new HashMap<>();
         listStudent.put(1,st1);
         listStudent.put(2,st2);
         System.out.println(listStudent);
         System.out.println(st1.equals(st2));
+        System.out.println("hash code student 1 " + st1.hashCode());
+        System.out.println("hash code student 2 " + st2.hashCode());
         System.out.println(listStudent.get(1).hashCode());
     }
 }

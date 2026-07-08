@@ -1,4 +1,4 @@
-package org.example.Assignment.enums;
+package org.example.assignment.enums;
 
 public enum RoleSelectionEnum {
 	UNIVERSITY(1, "Đại Học"),

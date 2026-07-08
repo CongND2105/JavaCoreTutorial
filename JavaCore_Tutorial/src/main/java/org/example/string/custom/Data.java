@@ -14,18 +14,4 @@ public class Data {
     public List<SinhVien> getList(){
         return list;
     }
-    /**
-     * 9.5
-     * 6.5
-     * 2.5
-     *
-     *6.5
-     * 9.5
-     * 2.5
-     *
-     * 6.5
-     * 2.6
-     * 9.5
-     *
-     */
 }

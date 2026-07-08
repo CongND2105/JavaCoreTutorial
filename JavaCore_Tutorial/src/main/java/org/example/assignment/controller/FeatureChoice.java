@@ -1,8 +1,8 @@
-package org.example.Assignment.controller;
+package org.example.assignment.controller;
 
-import org.example.Assignment.enums.FeatureSelectionEnum;
-import org.example.Assignment.enums.RoleSelectionEnum;
-import org.example.Assignment.view.Input;
+import org.example.assignment.enums.FeatureSelectionEnum;
+import org.example.assignment.enums.RoleSelectionEnum;
+import org.example.assignment.view.Input;
 
 public class FeatureChoice {
 

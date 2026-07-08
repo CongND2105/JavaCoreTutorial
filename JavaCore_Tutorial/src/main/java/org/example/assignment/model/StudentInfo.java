@@ -1,6 +1,6 @@
-package org.example.Assignment.model;
+package org.example.assignment.model;
 
-import org.example.Assignment.utils.ValidationUtil;
+import org.example.assignment.utils.ValidationUtil;
 
 public class StudentInfo {
 
