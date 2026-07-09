@@ -1,6 +1,6 @@
 package org.example.filehandling;
 
-public class Student {
+public class Student implements Comparable<Student> {
     private String id ;
     private String name;
     private int yearOfBirth;
@@ -42,7 +42,11 @@ public class Student {
 
     @Override
     public String toString(){
-        return "id = "+ id + "name = " + name + "Year of Birth = " +yearOfBirth + "average Score " + averageScore;
+        return "id = "+ id + " name = " + name + " Year of Birth = " +yearOfBirth + " average Score " + averageScore +"\n";
     }
 
+    @Override
+    public int compareTo(Student o) {
+        return (int) (o.averageScore - this.averageScore);
+    }
 }

@@ -11,7 +11,8 @@ public class Data {
     }
     public List<Student> getData(){
         list.add(new Student("H001","Cong",2002,9.8));
-        list.add(new Student("H002","Nam",1998,8));
+        list.add(new Student("H002","Nam",1998,6));
+        list.add(new Student("H002","Phong",2000,8));
         return list;
     }
 }
