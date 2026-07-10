@@ -1,5 +1,7 @@
 package org.example.filehandling;
 
+import java.util.Objects;
+
 public class Student implements Comparable<Student> {
     private String id ;
     private String name;
@@ -42,11 +44,24 @@ public class Student implements Comparable<Student> {
 
     @Override
     public String toString(){
-        return "id = "+ id + " name = " + name + " Year of Birth = " +yearOfBirth + " average Score " + averageScore +"\n";
+        return "id = "+ id + " | name = " + name + " | Year of Birth = " +yearOfBirth + " | average Score " + averageScore +"\n";
     }
 
     @Override
     public int compareTo(Student o) {
         return (int) (o.averageScore - this.averageScore);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+        Student st = (Student) o;
+        return this.id.equals(st.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }

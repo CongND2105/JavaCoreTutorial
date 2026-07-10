@@ -5,10 +5,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class StudentList {
-    Data data = new Data();
-    List<Student> list = new ArrayList<>(data.getData());
+
+    private List<Student> list;
 
     public StudentList() {
+        this.list = new ArrayList<>(new Data().getData());
+        new Data().saveDataInFile();
     }
 
     public StudentList(List<Student> list) {

@@ -1,5 +1,9 @@
 package org.example.filehandling;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,4 +19,20 @@ public class Data {
         list.add(new Student("H002","Phong",2000,8));
         return list;
     }
+    public void saveDataInFile(){
+        try{
+            File file = new File("/home/kong/Study/JavaCoreTutorial/JavaCore_Tutorial/src/main/java/org/example/filehandling/data.txt");
+            OutputStream os = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(os);
+            for(Student st : list){
+                oos.writeObject(st);
+            }
+            oos.flush();
+            oos.close();
+        }catch (Exception e){
+            System.out.println(" " +e.getMessage());
+        }
+
+    }
+
 }
