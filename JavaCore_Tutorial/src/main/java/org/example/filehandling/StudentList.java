@@ -10,7 +10,7 @@ public class StudentList {
 
     public StudentList() {
         this.list = new ArrayList<>(new Data().getData());
-        new Data().saveDataInFile();
+        new Data().getData();
     }
 
     public StudentList(List<Student> list) {

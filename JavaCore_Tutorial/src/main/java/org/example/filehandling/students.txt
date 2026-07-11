@@ -1,0 +1,14 @@
+[
+	{
+		"id" :"H001",
+		"name" :"Cong",
+		"yearOfBirth":2002,
+		"averageSocre":9
+	},
+	{
+		"id" :"H002",
+		"name" :"Nam",
+		"yearOfBirth":1998,
+		"averageSocre":8
+	}
+]
